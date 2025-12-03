@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns:local="clr-namespace:VaidaGeorgeLab7"    
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VaidaGeorgeLab7.ListPage"
              Title="ListPage">
@@ -13,5 +14,24 @@
             <Button Text="Save" Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
         </Grid>
+        <ListView x:Name="listView" Margin="20">
+            <ListView.ItemTemplate>
+                <ViewCell>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label 
+                        Text="{Binding Description}" 
+                        VerticalOptions="Center" />
+
+                        <Button 
+                        Grid.Column="1"
+                        Text="Delete"
+                        Clicked="OnDeleteItemClicked"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
+                    </Grid>
+                </ViewCell>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
     </StackLayout>
 </ContentPage>
