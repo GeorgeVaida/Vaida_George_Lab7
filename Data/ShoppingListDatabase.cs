@@ -19,6 +19,11 @@ namespace VaidaGeorgeLab7.Data
             _database.CreateTableAsync<Product>().Wait();
             _database.CreateTableAsync<ListProduct>().Wait();
         }
+
+        public Task<int> DeleteListProductAsync (int shoplistid, int productid)
+        {
+            return _database.ExecuteAsync("DELETE FROM ListProduct WHERE ShopListID = ? AND ProductID = ?", shoplistid, productid);
+        }
         public Task<int> SaveProductAsync(Product product)
         {
             if (product.ID != 0)

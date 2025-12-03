@@ -9,14 +9,18 @@ public partial class ListPage : ContentPage
 		InitializeComponent();
 	}
     
-    async void OnDeleteItemClicked(object sender, EventArgs e)
+    async void OnDeleteItem(object sender, EventArgs e)
     {
-        var product = listView.SelectedItem as Product;
-        await App.Database.DeleteProductAsync(product);
-        listView.ItemsSource = await App.Database.GetProductsAsync();
+        var button = sender as Button;
+        var product = button.BindingContext as Product;
+        var shoplist = this.BindingContext as ShopList;
+
+        await App.Database.DeleteListProductAsync(shoplist.ID, product.ID);
+        OnAppearing();
     }
     async void OnChooseButtonClicked(object sender, EventArgs e)
     {
+        // aaaaa
         await Navigation.PushAsync(new ProductPage((ShopList)
        this.BindingContext)
         {

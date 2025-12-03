@@ -16,20 +16,14 @@
         </Grid>
         <ListView x:Name="listView" Margin="20">
             <ListView.ItemTemplate>
-                <ViewCell>
+                <DataTemplate>
+                    <ViewCell>
                     <Grid ColumnDefinitions="*,Auto">
-                        <Label 
-                        Text="{Binding Description}" 
-                        VerticalOptions="Center" />
-
-                        <Button 
-                        Grid.Column="1"
-                        Text="Delete"
-                        Clicked="OnDeleteItemClicked"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"/>
+                        <Label Text="{Binding Description}" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteItem" HorizontalOptions="End" VerticalOptions="Center"/>
                     </Grid>
-                </ViewCell>
+                    </ViewCell>
+                </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
