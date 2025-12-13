@@ -17,10 +17,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+            </Grid>
+            <VerticalStackLayout Spacing="10">
                 <Button Text="Save Shop" Grid.Column="0" MaximumWidthRequest="200" Clicked="OnSaveButtonClicked"/>
                 <Button Text="Show on Map" Grid.Column="1" MaximumWidthRequest="200" Clicked="OnShowMapButtonClicked"/>
-            </Grid>
-            <Button Text="Delete Shop" MaximumWidthRequest="200" Clicked="OnDeleteButtonClicked"/>
+                <Button Text="Delete Shop" MaximumWidthRequest="200" Clicked="OnDeleteButtonClicked"/>
+            </VerticalStackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

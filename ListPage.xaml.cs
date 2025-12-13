@@ -37,13 +37,23 @@ public partial class ListPage : ContentPage
 
         var shopl = (ShopList)BindingContext;
         listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+
+        if (shopl.ShopID != 0)
+        {
+            var selectedShop = items.FirstOrDefault(item => item.ID == shopl.ShopID);
+            if (selectedShop != null)
+            {
+                ShopPicker.SelectedItem = selectedShop;
+            }
+        }
     }
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
         var slist = (ShopList)BindingContext;
         slist.Date = DateTime.UtcNow;
         Shop selectedShop = (ShopPicker.SelectedItem as Shop);
-        slist.ShopID = selectedShop.ID;
+        if (selectedShop != null)
+            slist.ShopID = selectedShop.ID;
         await App.Database.SaveShopListAsync(slist);
         await Navigation.PopAsync();
     }
